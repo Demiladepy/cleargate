@@ -1,0 +1,25 @@
+# Speculos — Ledger device emulator (valid bounty proof-of-use)
+# Requires apps/ethereum.elf — run: npm run speculos:fetch-elf
+services:
+  speculos:
+    image: ghcr.io/ledgerhq/speculos:latest
+    container_name: cleargate-speculos
+    ports:
+      - "5000:5000"   # REST API + web UI (device screen)
+      - "40000:40000" # APDU
+    environment:
+      SPECULOS_APPNAME: "Ethereum:1.22.1"
+    command:
+      - --model
+      - nanox
+      - --seed
+      - "abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about"
+      - --api-port
+      - "5000"
+      - --apdu-port
+      - "40000"
+      - --display
+      - headless
+      - /speculos/apps/ethereum.elf
+    volumes:
+      - ./apps:/speculos/apps:ro

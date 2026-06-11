@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.cache/
+*.log
+
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Speculos Ethereum app binary (downloaded locally)
+apps/*.elf
+
+# Local recordings (upload to X/YouTube, not the repo)
+*.mp4
+*.mov
+*.webm

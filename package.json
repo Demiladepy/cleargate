@@ -1,0 +1,42 @@
+{
+  "name": "clear-gate",
+  "version": "0.1.0",
+  "description": "Autonomous EVM agent that refuses to sign transactions the device cannot render via ERC-7730",
+  "type": "commonjs",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc",
+    "chains": "tsx src/cli/list-chains.ts",
+    "demo:gate": "tsx src/cli/demo-gate.ts",
+    "demo:clear-sign": "tsx src/cli/demo-clear-sign.ts",
+    "demo:attack-naive": "tsx src/cli/demo-attack-naive.ts",
+    "demo:attack-gated": "tsx src/cli/demo-attack-gated.ts",
+    "demo:all": "tsx src/cli/demo-all.ts",
+    "test": "tsx --test src/gate/gate.test.ts",
+    "speculos:fetch-elf": "powershell -ExecutionPolicy Bypass -File scripts/fetch-ethereum-elf.ps1",
+    "speculos:up": "docker compose up speculos",
+    "speculos:down": "docker compose down",
+    "speculos:wait": "tsx src/cli/wait-speculos.ts",
+    "speculos:enable-blind-signing": "powershell -ExecutionPolicy Bypass -File scripts/enable-blind-signing.ps1",
+    "verify:push": "powershell -ExecutionPolicy Bypass -File scripts/verify-before-push.ps1"
+  },
+  "dependencies": {
+    "@ethereum-sourcify/clear-signing": "^0.2.0",
+    "@ledgerhq/device-management-kit": "^1.5.1",
+    "@ledgerhq/device-signer-kit-ethereum": "^1.16.0",
+    "@ledgerhq/device-transport-kit-node-hid": "^1.0.1",
+    "@ledgerhq/device-transport-kit-speculos": "^1.2.1",
+    "@ledgerhq/speculos-device-controller": "^0.3.0",
+    "dotenv": "^17.4.2",
+    "rxjs": "^7.8.2",
+    "viem": "^2.52.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}
